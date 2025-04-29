@@ -8,8 +8,8 @@
 	import { shuffle } from "./utils.js";
 
     const level = levels[0];
+    
     const size: number = level.size;
-
     let grid: string[] = createGrid(level);
     let founded: string[] = [];
     let remaining: number = level.duration;

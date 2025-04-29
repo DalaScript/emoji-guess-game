@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { send } from "./transitions.js";
-
     let { 
-      emoji, 
-      onclick, 
-      selected, 
-      founded, 
-      group 
-    }: { emoji: string, onclick: () => void, selected: boolean, founded: boolean, group: 'a' | 'b' } = $props();
+      emoji,
+      onclick,
+      selected,
+      founded,
+      group
+    }: { emoji: string; onclick: () => void; selected: boolean; founded: boolean; group: 'a' | 'b' } = 
+        $props();
 </script>
 
 <div class="square" class:flipped={selected || founded}>
@@ -19,7 +19,6 @@
         <span out:send={{ key: `${emoji}${group}` }}>{emoji}</span>
     {/if}
 </div>
-
 
 <style>
     .square {
@@ -58,7 +57,7 @@
         width: 100%;
         height: 100%;
         backface-visibility: hidden;
-        background-color: #ccc;
+        background-color: #eee;
         border: none;
         border-radius: 1em;
         font-size: inherit;

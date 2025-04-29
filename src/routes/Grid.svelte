@@ -1,13 +1,14 @@
 <script lang="ts">
-
 	import Square from "./Square.svelte";
     let { 
         grid, 
         founded, 
-        found }: { 
+        found 
+    }: { 
             grid: string[]; 
             founded: string[], 
-            found: (even: string, data: { emoji: string }) => void } = $props();
+            found: (even: string, data: { emoji: string }) => void; 
+    } = $props();
 
     let a: number = $state(-1);
     let b: number = $state(-1);
@@ -16,25 +17,28 @@
 
 <div class="grid">
     {#each grid as emoji, i}
-        <Square {emoji} onclick={() => {
-            clearTimeout(resetTimeout);
-            if(a === -1 && b === -1) {
-                a = i;
-            }else if (b === -1){
-                b = i;
-                if(grid[a] === grid[b]) {
-                    found('found', {
-                        emoji
-                    })
+        <Square 
+            {emoji} 
+            onclick={() => {
+                clearTimeout(resetTimeout);
+                if(a === -1 && b === -1) {
+                    a = i;
+                }else if (b === -1){
+                    b = i;
+                    if(grid[a] === grid[b]) {
+                        // correct
+                        found('found', {
+                            emoji
+                        });
+                    }else {
+                        resetTimeout = setTimeout(() => {
+                            a = b = -1;
+                        }, 1000);
+                    }
                 }else {
-                    resetTimeout = setTimeout(() => {
-                        a = b = -1;
-                    }, 1000);
+                    b = -1;
+                    a = i;
                 }
-            }else {
-                b = -1;
-                a = -1;
-            }
         }}
         selected={a === i || b === i}
         founded={founded.includes(emoji)}

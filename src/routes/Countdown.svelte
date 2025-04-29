@@ -1,9 +1,9 @@
-
 <script lang="ts">
     let { 
         remaining, 
         duration,
-        onclick }: { remaining: number; duration: number; onclick: () => void } = $props();
+        onclick 
+    }: { remaining: number; duration: number; onclick: () => void } = $props();
 </script>
 
 <div class="countdown">

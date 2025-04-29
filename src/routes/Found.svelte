@@ -28,6 +28,7 @@
         border-radius: 50%;
         background-color: #fff;
     }
+
     span {
         position: absolute;
         font-size: 2.8em;
